@@ -12,14 +12,14 @@ let source = `
  }
 `;
 
-let sourceFile = ts.createSourceFile('sample.ts', source, ts.ScriptTarget.ES6, /*setParentNodes */ true);
+let sourceFile = ts.createSourceFile('sample.ts', source, ts.ScriptTarget.ES5, /*setParentNodes */ true);
 
 ts.forEachChild(sourceFile, each);
 
-function each(node) {
+function each(node: ts.Node) {
     switch (node.kind) {
         case ts.SyntaxKind.ClassDeclaration:
-            classDeclaration(node);
+            classDeclaration(<ts.ClassDeclaration>node);
             break;
         default:
             next();
@@ -32,7 +32,6 @@ function each(node) {
 
 }
 
-function classDeclaration(node) {
-  console.log(node.name.text);
+function classDeclaration(node: ts.ClassDeclaration) {
+  console.log(node.name?.text);
 }
-
