@@ -16,10 +16,10 @@ let sourceFile = ts.createSourceFile('sample.ts', source, ts.ScriptTarget.ES6, /
 
 ts.forEachChild(sourceFile, each);
 
-function each(node: ts.Node) {
+function each(node) {
     switch (node.kind) {
         case ts.SyntaxKind.ClassDeclaration:
-            classDeclaration(<ts.ClassDeclaration>node);
+            classDeclaration(node);
             break;
         default:
             next();
@@ -32,7 +32,7 @@ function each(node: ts.Node) {
 
 }
 
-function classDeclaration(node: ts.ClassDeclaration) {
+function classDeclaration(node) {
   console.log(node.name.text);
 }
 
