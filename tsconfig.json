@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["src/*"]
-    },
-    "outDir": "./dist/",
+    "outDir": "./bin/",
+    "rootDir": "./lib/",
     "jsx": "react",
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "noImplicitAny": true,
     "strict": true,
     "esModuleInterop": true,
@@ -16,5 +13,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "downlevelIteration": true
-  }
+  },
+  "include": ["lib/**/*"]
 }
