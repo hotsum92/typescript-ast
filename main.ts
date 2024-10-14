@@ -5,12 +5,12 @@ import * as ts from 'typescript'
 let program = ts.createProgram(['./src/index.ts'], { allowJs: true });
 let sourceFile = program.getSourceFile('./src/index.ts');
 
-ts.forEachChild(sourceFile, each);
+ts.forEachChild(sourceFile!, each);
 
-function each(node) {
+function each(node: ts.Node) {
     switch (node.kind) {
         case ts.SyntaxKind.ClassDeclaration:
-            classDeclaration(node);
+            classDeclaration(<ts.ClassDeclaration>node);
             break;
         default:
             next();
@@ -23,6 +23,6 @@ function each(node) {
 
 }
 
-function classDeclaration(node) {
-  console.log(node.name.text);
+function classDeclaration(node: ts.ClassDeclaration) {
+  console.log(node.name?.text);
 }
